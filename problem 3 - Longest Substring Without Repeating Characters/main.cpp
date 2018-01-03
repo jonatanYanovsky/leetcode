@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <map>
+#include <vector>
 #include <set>
 
 // Jonatan Yanovsky
@@ -11,35 +11,33 @@ using namespace std;
 
 class Solution {
 public:
-	int lengthOfLongestSubstring(string s) {
-		int l;
+	int lengthOfLongestSubstring(string s) { // move from map to vector
 
 		set<char> mySet; // characters we have already seen
+
+		vector<string> mySubstrings; // holds our strings
+		mySubstrings.push_back(""); 
+
 		int substringNum = 0; // which substring are we looking at
-
-		map<int, string> mySubstrings; // substring, string
-
-		mySubstrings.insert({ substringNum, "" }); // first element
 
 		for (char& c : s) {
 			if (mySet.find(c) != mySet.end()) { // found a copy of a character
 				substringNum++; // move to next substring
 				mySet.clear(); // empty the characters that we have seen
-				mySubstrings.insert({ substringNum, "" }); // create a new substring
+				mySubstrings.push_back(""); // create a new substring
 			}
 
 			mySet.insert(c); // seen character
-			auto it = mySubstrings.find(substringNum); 
-			it->second.append(1, c); // add to substring
+			mySubstrings[substringNum].append(1, c); // add to substring
 		}
 
-		int largest = 0; // = substringNum; // largest string
+		int largest = 0; // largest string
 
-		for (int i = substringNum; i >= 0; i--) { // find length of largest substring in the map
-			auto it = mySubstrings.find(i);
+		for (int i = substringNum; i >= 0; i--) { // find length of largest substring in the vector
+			int ln = mySubstrings[i].length();
 
-			if (it->second.length() > largest)
-				largest = it->second.length();
+			if (ln > largest)
+				largest = ln; // assign next largest length
 		}
 
 		return largest;
