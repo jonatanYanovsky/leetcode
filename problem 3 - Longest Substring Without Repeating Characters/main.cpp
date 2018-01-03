@@ -11,7 +11,7 @@ using namespace std;
 
 class Solution {
 public:
-	int lengthOfLongestSubstring(string s) { // move from map to vector
+	int lengthOfLongestSubstring(string s) {
 
 		set<char> mySet; // characters we have already seen
 
