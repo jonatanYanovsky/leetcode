@@ -6,6 +6,8 @@
 // solution for leetcode - Two Sum   
 // 1/1/2018
 
+// note: the single pass will return {3, 5} as 9 + 11 = 20. This is equivalent to {2, 6} for 5 + 15 = 20 for the other algorithms
+
 using namespace std;
 
 class Solution {
