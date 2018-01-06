@@ -24,22 +24,16 @@ public:
 
 		if (numDigits % 2 == 0) { // even
 			middle = (numDigits - 1) / 2;
-		}
-		else { // odd
-			middle = numDigits / 2; // rounds down
-		}
-
-		int low, high; // digit values 
-
-		if (numDigits % 2 == 0) { // even setup
-
 			left = middle;
 			right = middle + 1; // indices of digits
 		}
-		else { // odd setup
+		else { // odd
+			middle = numDigits / 2; // rounds down
 			left = middle - 1;
 			right = middle + 1; // indices of digits
 		}
+
+		int low, high; // digit values 
 
 		while (left >= 0 && right < numDigits) { // check all digits
 			low = getDigit(x, left);
